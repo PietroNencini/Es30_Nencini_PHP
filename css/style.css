@@ -1,0 +1,11 @@
+input:not([type="radio"]), select {
+    width: 25% !important;
+}
+
+#form_container > form > * {
+    margin: 0.5rem auto 0.5rem auto !important;
+}
+
+body {
+    background: linear-gradient(90deg, rgb(0, 212, 123), rgb(222, 186, 4));
+}
