@@ -13,34 +13,39 @@
         <h1 class=""> ACQUISTA ORA I TUOI BIGLIETTI DELLO STADIO </h1>
     </div>
     <div class="p-2 bg-secondary-subtle shadow-lg w-50 mx-auto rounded-3" id="form_container">
-        <h4> Inserire i dati personali per prenotare </h4>
+        <h4 class="text-center"> Inserire i dati personali per prenotare </h4>
         <form action="./php/purchaseManager.php" method="get">
             <label for="name" class="form-label"> Nome </label>
-            <input type="text" name="user_name" id="name" class="form-control">
+            <input type="text" name="user_name" id="name" class="form-control" required>
             <label for="surname" class="form-label"> Cognome </label>
-            <input type="text" name="user_surname" id="surname" class="form-control">
+            <input type="text" name="user_surname" id="surname" class="form-control" required>
             <label for="fisc_code" class="form-label"> Codice fiscale </label>
-            <input type="text" name="fiscal_code" id="fisc_code" class="form-control" maxlength="16">
+            <input type="text" name="fiscal_code" id="fisc_code" class="form-control" maxlength="16" required placeholder="AAABBBYYMGGCCCD...">
             <label for="sector" class="form-label"> Selezionare il settore desiderato</label>
-            <select name="sectorChocie" id="sector" class="form-select">
+            <select name="sectorChoice" id="sector" class="form-select" required>
                 <option value="curva"> CURVA </option>
                 <option value="centrale"> TRIBUNA CENTRALE </option>
                 <option value="onore"> TRIBUNA D'ONORE </option>
             </select>
             <label for="coupon" class="form-label"> Se disponi di un coupon/codice sconto valido, inseriscilo qui </label>
-            <input type="text" name="coupon" id="coupon" class="form-control">
+            <input type="text" name="coupon" id="coupon" class="form-control" required placeholder="XXXXXXXX...">
             <label for="coupon" class="form-label"> Modalità di acquisto </label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="single_multi" id="single" onclick="hideHiddenForm()">
+                <input class="form-check-input" type="radio" name="single_multi" id="single" onclick="hideHiddenForm()" required value="s">
                 <label class="form-check-label" for="single"> Biglietto singolo </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="single_multi" id="multi" onclick="showHiddenForm()">
-                <label class="form-check-label" for="multi"> Più biglietti (MAX 4)</label>
+                <input class="form-check-input" type="radio" name="single_multi" id="multi" onclick="showHiddenForm()" required value="m">
+                <label class="form-check-label" for="multi"> Più biglietti (MAX 4) - codice fiscale dei clienti aggiuntivi richiesto</label>
             </div>
             <div id="hidden_form" style="display: none;">
-                <input type="number" name="ticket_num" id="num" class="form-control" value="1" min="1" max="4">
-            </div>    
+                <input type="number" name="ticket_num" id="num" class="form-control" value="2" min="2" max="4" required oninput="addExtraInputs()">
+                <div id="extra_cfs">
+                    <input type="text" name="fiscal_code_add_1" id="fiscal_code_add_1" class="form-control" maxlength="16" required placeholder="CF AGGIUNTIVO...">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary fw-bold fs-5"> INVIA </button>
+            <button type="reset" class="btn btn-danger fw-bold fs-5"> CANCELLA </button>
         </form>
     </div>
 

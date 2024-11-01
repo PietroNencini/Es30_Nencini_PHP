@@ -3,8 +3,12 @@ input:not([type="radio"]), select {
 }
 
 #form_container > form > * {
-    margin: 0.5rem auto 0.5rem auto !important;
+    margin: 0.5rem;
 }
+input[type="text"], input[type="number"], select {
+    margin-left:  1.5rem !important;
+}
+
 
 body {
     background: linear-gradient(90deg, rgb(0, 212, 123), rgb(222, 186, 4));
