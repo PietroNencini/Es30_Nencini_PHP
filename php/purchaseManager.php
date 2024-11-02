@@ -30,11 +30,14 @@
         $ticket_num = $num_ticket_choice == "s" ? 1 : $_GET['ticket_num'];
 
         //*lista codici fiscali degli eventuali biglietti aggiuntivi (se presenti)
-        if($num_ticket_choice == "m")
-            for($i=2; $i <= $_GET['ticket_num']; $i++) {
-                $additional_fc[$i-2] = $_GET["fiscal_code_add_$i"];
+        echo "Sono davanti all'if $num_ticket_choice";
+        
+        if($num_ticket_choice == "m") 
+            echo "";
+            for($i=1; $i < $_GET['ticket_num']; $i++) {
+                $additional_fc[$i-1] = $_GET["fiscal_code_add_$i"];
             }
-
+        echo print_r($additional_fc);
         $total_cost = $ticket_num;
         switch($sector) {
             case "curva":
@@ -47,7 +50,7 @@
                 $total_cost *= VIP_COST;
         }
 
-        $new_total = in_array($coupon, $available_coupons) ? $total_cost * (1 - $available_coupons[$coupon]) : $total_cost;
+        $new_total = array_key_exists($coupon, $available_coupons) ? $total_cost * (1 - $available_coupons[$coupon]) : $total_cost;
     ?> 
 
     <div id="price_list" class="w-50 mx-auto my-3 bg-body-tertiary rounded-4 p-3">
@@ -73,7 +76,7 @@
             }
         ?></p>
         <?php
-            if(in_array($coupon, $available_coupons))
+            if(array_key_exists($coupon, $available_coupons))
                 echo "<p>Coupon utilizzato: $coupon - sconto del ". $available_coupons[$coupon] * 100 ."%</p>";
             else
                 echo "<p> Buono sconto non inserito o non valido </p>";
