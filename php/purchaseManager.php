@@ -27,12 +27,12 @@
 
         //* numero biglietti acquistati (massimo 4 acquistabili per ogni utente)   
         $num_ticket_choice = $_POST['single_multi'];
-        $ticket_num = $num_ticket_choice == "s" ? 1 : $_POST['ticket_num'];
+        $ticket_num = $num_ticket_choice == "s" ? 1 : $_POST['ticket_num'] + 1;
 
         //*lista codici fiscali degli eventuali biglietti aggiuntivi (se presenti)
         if($num_ticket_choice == "m") {
-            for($i=1; $i < $_POST['ticket_num']; $i++) {
-                $additional_fc[$i-1] = $_POST["fiscal_code_add_$i"];
+            for($i=1; $i <= $_POST['ticket_num']; $i++) {
+                $additional_fc[$i] = $_POST["fiscal_code_add_$i"];
             }
         }
         $total_cost = $ticket_num;

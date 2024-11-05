@@ -5,8 +5,12 @@ input:not([type="radio"]), select {
 #form_container > form > * {
     margin: 0.5rem;
 }
-input[type="text"], input[type="number"], select {
+input[type="text"], input[type="number"], select, button {
     margin-left:  1.5rem !important;
+}
+
+button.custom-btn {
+    font-weight: bolder;
 }
 
 

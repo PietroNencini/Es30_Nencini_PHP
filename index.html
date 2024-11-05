@@ -39,7 +39,9 @@
                 <label class="form-check-label" for="multi"> Più biglietti (MAX 4) - codice fiscale dei clienti aggiuntivi richiesto</label>
             </div>
             <div id="hidden_form" style="display: none;">
-                <input type="number" name="ticket_num" id="num" class="form-control" value="2" min="2" max="4" required oninput="addExtraInputs()">
+                <input type="number" name="ticket_num" id="num" class="form-control" value="1" min="1" max="4" readonly>
+                <button type="button" class="custom-btn btn btn-secondary my-2 mb-3" style="width: 3rem" onclick="changeTicketNumValue(1)"> + </button>
+                <button type="button" class="custom-btn btn btn-secondary my-2 mb-3" style="width: 3rem" onclick="changeTicketNumValue(-1)"> - </button>
                 <div id="extra_cfs">
                     <input type="text" name="fiscal_code_add_1" id="fiscal_code_add_1" class="form-control" maxlength="16" required placeholder="CF AGGIUNTIVO...">
                 </div>
