@@ -1,7 +1,5 @@
 function showHiddenForm() {
     document.getElementById('hidden_form').style.display = 'block';
-    document.getElementById('multi').value = 1;
-    
 }
 
 function hideHiddenForm() {
@@ -12,7 +10,7 @@ function addExtraInputs() {
     let extraInput_container = document.getElementById('extra_cfs');
     let extraInput_num = document.getElementById('num').value;  //todo L'input in html fa sì che questo valore sia sempre compreso tra 0 e 4 (inclusi)
     extraInput_container.innerHTML = "";                        //todo pulisce eventuali input di codice fiscali già presenti per rimpiazzarli con quelli nuovi in numero adeguato all'input inserito
-    for(let i = 2; i <= extraInput_num; i++) {
+    for(let i = 1; i < extraInput_num; i++) {
         let current_id = "fiscal_code_add_" + i;
         let new_cf_input = document.createElement("input");
         new_cf_input.setAttribute("type", "text");

@@ -16,28 +16,25 @@
         $available_coupons = ['FIRENZE5' => 0.05];
         $additional_fc = [];
         //* dati utente
-        $name = $_GET['user_name'];
-        $surname = $_GET['user_surname'];
-        $fc = $_GET['fiscal_code'];           // Per semplicità non controlliamo che il codice fiscale sia valido in base alla sua espressione regolare
-        $sector = $_GET['sectorChoice'];
-        $coupon = $_GET['coupon'];
+        $name = $_POST['user_name'];
+        $surname = $_POST['user_surname'];
+        $fc = $_POST['fiscal_code'];           // Per semplicità non controlliamo che il codice fiscale sia valido in base alla sua espressione regolare
+        $sector = $_POST['sectorChoice'];
+        $coupon = $_POST['coupon'];
 
         //* data e ora acquisto
         $purchase_time = date('Y-m-d H:i:s');
 
         //* numero biglietti acquistati (massimo 4 acquistabili per ogni utente)   
-        $num_ticket_choice = $_GET['single_multi'];
-        $ticket_num = $num_ticket_choice == "s" ? 1 : $_GET['ticket_num'];
+        $num_ticket_choice = $_POST['single_multi'];
+        $ticket_num = $num_ticket_choice == "s" ? 1 : $_POST['ticket_num'];
 
         //*lista codici fiscali degli eventuali biglietti aggiuntivi (se presenti)
-        echo "Sono davanti all'if $num_ticket_choice";
-        
-        if($num_ticket_choice == "m") 
-            echo "";
-            for($i=1; $i < $_GET['ticket_num']; $i++) {
-                $additional_fc[$i-1] = $_GET["fiscal_code_add_$i"];
+        if($num_ticket_choice == "m") {
+            for($i=1; $i < $_POST['ticket_num']; $i++) {
+                $additional_fc[$i-1] = $_POST["fiscal_code_add_$i"];
             }
-        echo print_r($additional_fc);
+        }
         $total_cost = $ticket_num;
         switch($sector) {
             case "curva":
@@ -72,7 +69,7 @@
                 echo "Biglietto singolo";
             else {
                 echo "Biglietto multiplo - $ticket_num persone";
-                echo "<br> Codice fiscale utenti aggiuntivi: <ul> <li>".implode(",", $additional_fc)."</li> </ul>";
+                echo "<br> Codice fiscale utenti aggiuntivi: <ul> <li>".implode(" </li> <li> ", $additional_fc)."</li> </ul>";
             }
         ?></p>
         <?php
@@ -85,9 +82,7 @@
         <p> Costo effettivo (eventuali sconti applicati):<b> <?php echo $new_total ?>€</b></p>
         <p> Data acquisto  <?php echo $purchase_time ?></p>
     </div>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
     </div>
     <div class="p-2 bg-secondary-subtle shadow-lg w-50 mx-auto rounded-3" id="form_container">
         <h4 class="text-center"> Inserire i dati personali per prenotare </h4>
-        <form action="./php/purchaseManager.php" method="get">
+        <form action="./php/purchaseManager.php" method="post">
             <label for="name" class="form-label"> Nome </label>
             <input type="text" name="user_name" id="name" class="form-control" required>
             <label for="surname" class="form-label"> Cognome </label>
@@ -31,7 +31,7 @@
             <input type="text" name="coupon" id="coupon" class="form-control" required placeholder="XXXXXXXX...">
             <label for="coupon" class="form-label"> Modalità di acquisto </label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="single_multi" id="single" onclick="hideHiddenForm()" required value="s">
+                <input class="form-check-input" type="radio" name="single_multi" id="single" onclick="hideHiddenForm()" required value="s" checked>
                 <label class="form-check-label" for="single"> Biglietto singolo </label>
             </div>
             <div class="form-check">
